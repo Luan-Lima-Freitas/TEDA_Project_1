@@ -3,63 +3,43 @@
 
 using namespace std;
 
-struct Vector
+float values[]; // There might be an arbitrary number of values!
+int heads[100];
+int num_vectors = 2;
+
+void print_vector(int i)
 {
-    int length;
-    float values[];
-
-    void set_length()
+    cout << "(" << values[heads[i]];
+    int j;
+    for(j = heads[i]+1; j < heads[i+1]; j++)
     {
-        cout << "Input length: ";
-        cin >> length;
-        while(cin.fail() || length < 1)
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Length must be positive integer." << endl;
-            cout << "Input length: ";
-            cin >> length;
-        }
+        cout << ", " << values[j];
     }
-
-    void set_values()
+    cout << ")";
+}
+void print_all_vectors()
+{
+    int i;
+    for(i = 0; i < num_vectors; i++)
     {
-        int i;
-        for(i = 0; i < length; i++)
-        {
-            cout << "Input value " << i+1 << " : ";
-            cin >> values[i];
-            while(cin.fail())
-            {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Value must be float." << endl;
-                cout << "Input value " << i+1 << " : ";
-                cin >> values[i];
-        }
-        }
+        print_vector(i);
+        cout << "\n";
     }
-
-    void print()
-    {
-        cout << "(" << values[0];
-        int i;
-        for(i = 1; i < length; i++)
-        {
-            cout << ", " << values[i];
-        }
-        cout << ")" << endl;
-    }
-};
+}
 
 int main()
 {
-    Vector v;
-    v.set_length();
-    v.set_values();
-    v.print();
+    heads[0] = 0;
+    heads[1] = 2;
+    heads[2] = 8;
 
-    int x = 0;
+    int i;
+    for(i = 0; i < heads[2]; i++)
+    {
+        values[i] = 2*i;
+    }
+
+    print_all_vectors();
 
     return 0;
 }
