@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1663366600 source:c:\users\laiz\desktop\luan\teda_project_1\func.cpp
+	<iostream>
+
+1663621914 source:c:\users\laiz\desktop\luan\teda_project_1\main.cpp
+	<iostream>
+	<limits>
+	<cmath>
+
